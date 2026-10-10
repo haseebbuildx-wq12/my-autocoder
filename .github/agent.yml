@@ -3,7 +3,7 @@ providers:
 
 provider_options:
   openrouter:
-    model: meta-llama/llama-3.3-70b-instruct:free
+       model: nvidia/nemotron-3.5-lightning:free
 
 max_ai_turns: 25
 max_repair_attempts: 5
