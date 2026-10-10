@@ -1,16 +1,17 @@
 {
   "status": "working",
-  "current_task_id": "T002",
+  "current_task_id": null,
   "completed_task_ids": [
-    "T001"
+    "T001",
+    "T002"
   ],
   "last_provider": "openrouter",
-  "last_action": "implement T002: Add divide function to calc.py",
+  "last_action": "completed T002",
   "last_error": null,
   "next_action": "next task",
-  "updated_at": "2026-10-10T10:24:25+00:00",
+  "updated_at": "2026-10-10T15:25:51+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
-  "run_count": 10,
+  "run_count": 11,
   "planning": {
     "stage": "done",
     "chunks_total": 1,
@@ -28,27 +29,13 @@
     },
     "openrouter": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-10-10T10:23:55+00:00",
+      "last_success_at": "2026-10-10T15:25:51+00:00",
       "last_error_kind": "outage",
       "last_error": "OpenRouter returned empty content",
       "last_error_at": "2026-10-10T09:47:50+00:00"
     }
   },
-  "task_runtime": {
-    "task_id": "T002",
-    "phase": "implement",
-    "repairs": 0,
-    "continuations": 0,
-    "last_signature": null,
-    "same_count": 0,
-    "failure": null,
-    "last_done": null,
-    "commands": [],
-    "files": [],
-    "providers_used": [],
-    "hint": null,
-    "last_results": []
-  },
+  "task_runtime": {},
   "in_flight_files": [],
   "avoid_provider": [],
   "verification_round": 0,

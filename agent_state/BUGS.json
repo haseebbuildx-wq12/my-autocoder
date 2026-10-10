@@ -1,3 +1,16 @@
 {
-  "bugs": []
+  "bugs": [
+    {
+      "id": "B0001",
+      "task_id": "T002",
+      "error": "[edit_rejected] tests/test_calc.py: rejected because it reduces the number of assertions/tests. Fix the implementation, do not weaken tests",
+      "attempt": 1,
+      "status": "fixed",
+      "severity": "normal",
+      "source": "verification",
+      "signature": "ce9ddc679957",
+      "created_at": "2026-10-10T15:25:19+00:00",
+      "resolved_at": "2026-10-10T15:25:51+00:00"
+    }
+  ]
 }

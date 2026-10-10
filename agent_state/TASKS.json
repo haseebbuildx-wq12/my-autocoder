@@ -61,12 +61,30 @@
       "files": [
         "calc.py"
       ],
-      "status": "in_progress",
+      "status": "completed",
       "cycles": 0,
-      "attempts": 0,
+      "attempts": 3,
       "files_changed": [],
-      "evidence": null,
-      "completed_at": null,
+      "evidence": {
+        "checks": [
+          {
+            "cmd": "python -m unittest discover -s tests -v",
+            "kind": "tests",
+            "exit_code": 0,
+            "ok": true,
+            "timed_out": false,
+            "duration_s": 0.05
+          }
+        ],
+        "repairs": 1,
+        "continuations": 1,
+        "providers": [
+          "openrouter"
+        ],
+        "summary": "Implement divide function in calc.py; verification passed.",
+        "weak": false
+      },
+      "completed_at": "2026-10-10T15:25:51+00:00",
       "corrective_for": null,
       "fixes_bugs": [],
       "notes": []
