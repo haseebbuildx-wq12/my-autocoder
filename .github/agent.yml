@@ -1,28 +1,14 @@
-# Autonomous coder configuration. Secrets live ONLY in GitHub Secrets, never here.
-providers:            # priority order; providers without credentials are skipped
-  - gemini
-  # - openrouter
-  # - cloudflare
+providers:
+  - openrouter
 
 provider_options:
-  gemini:
-    model: gemini-2.5-flash
-  # openrouter:
-  #   model: meta-llama/llama-3.3-70b-instruct:free   # use a model currently free for you
-  # cloudflare:
-  #   model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
-  #   account_id: ""                                  # or secret CLOUDFLARE_ACCOUNT_ID
+  openrouter:
+    model: meta-llama/llama-3.3-70b-instruct:free
 
-max_ai_turns: 25            # AI calls per workflow run, then checkpoint and exit (resumes next run)
+max_ai_turns: 25
 max_repair_attempts: 5
 max_file_bytes: 120000
 max_context_files: 30
-
-verification_commands: []   # extra commands run on every verification
-build_commands: []          # overrides detected build command(s)
-
-# overrides:
-#   install: ["composer install --no-interaction"]
-#   test: ["./vendor/bin/phpunit"]
-
+verification_commands: []
+build_commands: []
 schedule_enabled: true
