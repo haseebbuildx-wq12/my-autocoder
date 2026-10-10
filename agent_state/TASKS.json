@@ -1,3 +1,102 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Create calc.py module with add function",
+      "description": "Create a Python module calc.py containing the add(a, b) function that returns the sum of two numbers.",
+      "depends_on": [],
+      "requirements": [
+        "REQ-001"
+      ],
+      "verification": "Import calc module and call add(2, 3) to verify it returns 5.",
+      "verification_commands": [
+        "python -c \"import calc; print(calc.add(2, 3))\""
+      ],
+      "files": [
+        "calc.py"
+      ],
+      "status": "completed",
+      "cycles": 0,
+      "attempts": 2,
+      "files_changed": [],
+      "evidence": {
+        "checks": [
+          {
+            "cmd": "python -m unittest discover -s tests -v",
+            "kind": "tests",
+            "exit_code": 0,
+            "ok": true,
+            "timed_out": false,
+            "duration_s": 0.05
+          }
+        ],
+        "repairs": 0,
+        "continuations": 1,
+        "providers": [
+          "openrouter"
+        ],
+        "summary": "calc.py already contains the add(a, b) function returning the sum. Verified it works by running the verification command.",
+        "weak": false
+      },
+      "completed_at": "2026-10-10T09:41:14+00:00",
+      "corrective_for": null,
+      "fixes_bugs": [],
+      "notes": []
+    },
+    {
+      "id": "T002",
+      "title": "Implement divide function in calc.py",
+      "description": "Add divide(a, b) function to calc.py that returns a / b and raises ValueError when b is zero.",
+      "depends_on": [
+        "T001"
+      ],
+      "requirements": [
+        "REQ-002"
+      ],
+      "verification": "Call divide(10, 2) to verify it returns 5.0, and call divide(1, 0) to verify it raises ValueError.",
+      "verification_commands": [
+        "python -c \"import calc; print(calc.divide(10, 2)); calc.divide(1, 0)\""
+      ],
+      "files": [
+        "calc.py"
+      ],
+      "status": "pending",
+      "cycles": 0,
+      "attempts": 0,
+      "files_changed": [],
+      "evidence": null,
+      "completed_at": null,
+      "corrective_for": null,
+      "fixes_bugs": [],
+      "notes": []
+    },
+    {
+      "id": "T003",
+      "title": "Create unit tests for calc module",
+      "description": "Create tests/test_calc.py with unittest test cases covering add function, divide function, and divide error case.",
+      "depends_on": [
+        "T002"
+      ],
+      "requirements": [
+        "REQ-003"
+      ],
+      "verification": "Run unittest to verify all tests pass including the ValueError test case.",
+      "verification_commands": [
+        "python -m unittest tests.test_calc -v"
+      ],
+      "files": [
+        "tests/test_calc.py",
+        "tests/__init__.py"
+      ],
+      "status": "pending",
+      "cycles": 0,
+      "attempts": 0,
+      "files_changed": [],
+      "evidence": null,
+      "completed_at": null,
+      "corrective_for": null,
+      "fixes_bugs": [],
+      "notes": []
+    }
+  ]
 }

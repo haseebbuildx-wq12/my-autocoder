@@ -1,3 +1,43 @@
 {
-  "requirements": []
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "id": "REQ-001",
+      "description": "Provide a Python module `calc.py` with `add(a, b)` returning the sum.",
+      "source": "Spec part 1/1: Provide a Python module `calc.py` with `add(a, b)` returning the sum.",
+      "tasks": [
+        "T001"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-002",
+      "id": "REQ-002",
+      "description": "Implement `calc.divide(a, b)` that returns a / b and raises `ValueError` when b is zero.",
+      "source": "Spec part 1/1: `calc.divide(a, b)` returns a / b and raises `ValueError` when b is zero.",
+      "tasks": [
+        "T002"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-003",
+      "id": "REQ-003",
+      "description": "Include unit tests (unittest) in `tests/` covering both functions, including the error case.",
+      "source": "Spec part 1/1: Include unit tests (unittest) in `tests/` covering both functions, including the error case.",
+      "tasks": [
+        "T003"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    }
+  ]
 }
