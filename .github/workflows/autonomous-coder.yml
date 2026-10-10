@@ -1,0 +1,128 @@
+name: Autonomous Coder
+
+on:
+  workflow_dispatch:
+    inputs:
+      chain:
+        description: "Internal: self-continuation counter (leave 0)"
+        default: "0"
+      replan:
+        description: "Discard the plan and re-plan from MASTER_SPEC.md"
+        type: boolean
+        default: false
+      clear_blocks:
+        description: "Clear provider config blocks"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "17 */3 * * *"      # safe periodic resume; skipped when complete or schedule_enabled is false
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: autonomous-coder
+  cancel-in-progress: false
+
+env:
+  MAX_CHAIN: "30"               # hard cap on self-dispatched continuations per manual start
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false   # generated code must not be able to read the token from .git/config
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install agent dependencies
+        run: pip install -r requirements.txt
+
+      - name: Gate
+        id: gate
+        run: python -m agent.main gate --event "${{ github.event_name }}"
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          node-version: "20"
+
+      - uses: shivammathur/setup-php@v2
+        if: steps.gate.outputs.run == 'true'
+        continue-on-error: true
+        with:
+          php-version: "8.3"
+          tools: composer
+
+      - name: Configure git
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "autonomous-coder[bot]"
+          git config user.email "autonomous-coder@users.noreply.github.com"
+
+      - name: Run agent
+        id: agent
+        if: steps.gate.outputs.run == 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          GITHUB_TOKEN: ${{ github.token }}   # used only by the agent's own git push; scrubbed from child processes
+          AGENT_PUSH: "1"
+        run: |
+          FLAGS=""
+          if [ "${{ inputs.replan }}" = "true" ]; then FLAGS="$FLAGS --replan"; fi
+          if [ "${{ inputs.clear_blocks }}" = "true" ]; then FLAGS="$FLAGS --clear-blocks"; fi
+          set +e
+          python -m agent.main run $FLAGS
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Save and push progress
+        if: always() && steps.gate.outputs.run == 'true'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          AGENT_PUSH: "1"
+        run: python -m agent.main checkpoint || true
+
+      - name: Upload final project
+        if: steps.agent.outputs.exit_code == '0' && hashFiles('artifact/project.zip') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-project
+          path: |
+            artifact/project.zip
+            artifact/FINAL_REPORT.md
+
+      - name: Continue (bounded self-dispatch)
+        # Exit 10 = per-run budget used, more work remains and a provider is available.
+        # Exit 11 (no provider/quota) is NOT chained: the schedule retries later.
+        if: steps.agent.outputs.exit_code == '10'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          next=$(( ${{ inputs.chain || 0 }} + 1 ))
+          if [ "$next" -le "$MAX_CHAIN" ]; then
+            gh workflow run autonomous-coder.yml --ref "${{ github.ref_name }}" -f chain="$next"
+          else
+            echo "Chain limit reached; the schedule or a manual run will continue."
+          fi
+
+      - name: Report result
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          code="${{ steps.agent.outputs.exit_code }}"
+          echo "agent exit code: $code"
+          case "$code" in
+            0|10|11) exit 0 ;;
+            *) echo "::error::Agent stopped with exit code $code (3=provider config, 4=foreign changes, 5=stuck, 6=verification failed, 1=error). See logs and agent_state/."; exit 1 ;;
+          esac

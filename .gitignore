@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+project/vendor/
+artifact/
+.env
+.env.*
+!.env.example
+.agent_cache/
