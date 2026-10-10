@@ -27,11 +27,26 @@ concurrency:
 
 env:
   MAX_CHAIN: "30"               # hard cap on self-dispatched continuations per manual start
+  DATABASE_URL: postgres://postgres:postgres@localhost:5432/whatsapp_saas   # throwaway CI database only
 
 jobs:
   work:
     runs-on: ubuntu-latest
     timeout-minutes: 350
+    services:
+      postgres:                     # throwaway database for the generated project's tests (no Docker needed on your PC)
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: whatsapp_saas
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -60,6 +75,10 @@ jobs:
         with:
           php-version: "8.3"
           tools: composer
+
+      - name: Install PostgreSQL client tools (pg_dump / psql)
+        if: steps.gate.outputs.run == 'true'
+        run: sudo apt-get update -y && sudo apt-get install -y postgresql-client
 
       - name: Configure git
         if: steps.gate.outputs.run == 'true'
