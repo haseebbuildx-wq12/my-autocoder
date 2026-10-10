@@ -1,0 +1,2 @@
+# Decisions log
+- 2026-10-10T07:37:17+00:00 — Provider gemini reported config: HTTP 404: {   "error": {     "code": 404,     "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemin. Not falling back automatically; fix the configuration/credentials and re-run.
