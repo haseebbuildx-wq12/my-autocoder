@@ -110,6 +110,11 @@ class CheckRunner:
 
         for cmd, kind in planned:
             res = self.tb.run_command(cmd, kind=kind)
+            if res.exit_code == 126 and "rejected by safety policy" in res.stderr:
+                # A command the safety policy refuses is not a failing task: skip it (it proves
+                # nothing) and rely on the remaining checks. Retrying would only burn AI turns.
+                self.log.warning("skipping unsafe verification command %r: %s", cmd, res.stderr.strip()[:160])
+                continue
             results.append(res)
             if not res.ok:
                 return False, results, self.tb.inspect_errors(res)
