@@ -83,7 +83,14 @@ class Agent:
         except (FileNotFoundError, ValueError) as exc:
             self.log.error("%s", exc)
             return EXIT_ERROR
-        if p["status"] == "complete":
+        if p["status"] == "complete" and not replan:
+            if p.get("spec_sha256") and p["spec_sha256"] != sha256_text(spec):
+                # Never silently hand back the OLD project when the spec has changed.
+                self.log.error(
+                    "The previous project is already COMPLETE, but %s has changed since then. "
+                    "Nothing was built. To build the new specification, start the workflow again with the "
+                    "'Re-plan' option ticked (or run: python -m agent.main run --replan).", self.cfg["spec_path"])
+                return EXIT_ERROR
             self._ensure_package()
             self.log.info("project already complete; nothing to do")
             return EXIT_COMPLETE
@@ -92,6 +99,8 @@ class Agent:
             self.log.error("the working tree has uncommitted changes the agent did not make:\n  %s\n"
                            "Commit or stash them, or re-run with --allow-dirty.", "\n  ".join(unexpected[:20]))
             return EXIT_DIRTY
+        if replan and p["status"] == "complete":
+            p["status"] = "working"
         p["run_count"] += 1
         if "last_good_commit" not in p:
             p["last_good_commit"] = self.git.head_full()    # rollback target for abandoned attempts
