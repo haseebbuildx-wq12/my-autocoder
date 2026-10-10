@@ -18,18 +18,17 @@
       "files": [
         "calc.py"
       ],
-      "status": "in_progress",
-      "cycles": 0,
-      "attempts": 5,
-      "files_changed": [
-        "calc.py",
-        "test_calc.py"
-      ],
+      "status": "pending",
+      "cycles": 1,
+      "attempts": 6,
+      "files_changed": [],
       "evidence": null,
       "completed_at": null,
       "corrective_for": null,
       "fixes_bugs": [],
-      "notes": []
+      "notes": [
+        "cycle 1 failed: ----------------------------------------------------------------------\nRan 0 tests in 0.000s\nNO TESTS RAN"
+      ]
     },
     {
       "id": "T002",
