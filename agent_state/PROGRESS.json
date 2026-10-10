@@ -6,7 +6,7 @@
   "last_action": "planning: extracting requirements (part 1/1)",
   "last_error": "openrouter: config: HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.3-70b-instruct\",\"code\":404},\"user_id\":\"user_3KUiXkmb1kLnTpoXqihHYcmBgGJ\"}",
   "next_action": "fix provider credentials/configuration, then re-run (blocks lift when the credential changes)",
-  "updated_at": "2026-10-10T08:13:36+00:00",
+  "updated_at": "2026-10-10T08:13:37+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
   "run_count": 4,
   "planning": {
