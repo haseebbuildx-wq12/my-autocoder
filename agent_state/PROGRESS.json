@@ -4,17 +4,25 @@
   "completed_task_ids": [],
   "last_provider": null,
   "last_action": "planning: extracting requirements (part 1/1)",
-  "last_error": "gemini: missing_credentials: no configured provider has credentials: {'gemini': ['GEMINI_API_KEY']}",
+  "last_error": "openrouter: config: HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.3-70b-instruct\",\"code\":404},\"user_id\":\"user_3KUiXkmb1kLnTpoXqihHYcmBgGJ\"}",
   "next_action": "fix provider credentials/configuration, then re-run (blocks lift when the credential changes)",
-  "updated_at": "2026-10-10T07:54:22+00:00",
+  "updated_at": "2026-10-10T08:09:52+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
-  "run_count": 2,
+  "run_count": 3,
   "planning": {
     "stage": "requirements",
     "chunks_total": 1
   },
   "providers": {
-    "gemini": {}
+    "gemini": {},
+    "openrouter": {
+      "blocked": {
+        "kind": "config",
+        "message": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.3-70b-instruct\",\"code\":404},\"user_id\":\"user_3KUiXkmb1kLnTpoXqihHYcmBgGJ\"}",
+        "at": "2026-10-10T08:09:52+00:00",
+        "fingerprint": "e3677b6267dd"
+      }
+    }
   },
   "task_runtime": {},
   "in_flight_files": [],
