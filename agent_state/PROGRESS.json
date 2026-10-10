@@ -4,24 +4,17 @@
   "completed_task_ids": [],
   "last_provider": null,
   "last_action": "planning: extracting requirements (part 1/1)",
-  "last_error": "gemini: config: HTTP 404: {   \"error\": {     \"code\": 404,     \"message\": \"This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemin",
+  "last_error": "gemini: missing_credentials: no configured provider has credentials: {'gemini': ['GEMINI_API_KEY']}",
   "next_action": "fix provider credentials/configuration, then re-run (blocks lift when the credential changes)",
-  "updated_at": "2026-10-10T07:37:18+00:00",
+  "updated_at": "2026-10-10T07:54:21+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
-  "run_count": 1,
+  "run_count": 2,
   "planning": {
     "stage": "requirements",
     "chunks_total": 1
   },
   "providers": {
-    "gemini": {
-      "blocked": {
-        "kind": "config",
-        "message": "HTTP 404: {   \"error\": {     \"code\": 404,     \"message\": \"This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemin",
-        "at": "2026-10-10T07:37:17+00:00",
-        "fingerprint": "c6a9043a82d3"
-      }
-    }
+    "gemini": {}
   },
   "task_runtime": {},
   "in_flight_files": [],
