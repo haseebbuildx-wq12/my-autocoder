@@ -106,9 +106,9 @@
         "tests/test_calc.py",
         "tests/__init__.py"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "cycles": 0,
-      "attempts": 0,
+      "attempts": 3,
       "files_changed": [],
       "evidence": null,
       "completed_at": null,
