@@ -6,7 +6,7 @@
   "last_action": "planning: extracting requirements (part 1/1)",
   "last_error": "gemini: missing_credentials: no configured provider has credentials: {'gemini': ['GEMINI_API_KEY']}",
   "next_action": "fix provider credentials/configuration, then re-run (blocks lift when the credential changes)",
-  "updated_at": "2026-10-10T07:54:21+00:00",
+  "updated_at": "2026-10-10T07:54:22+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
   "run_count": 2,
   "planning": {
