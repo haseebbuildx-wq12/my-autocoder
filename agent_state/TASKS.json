@@ -106,12 +106,48 @@
       "files": [
         "tests/calc_test.py"
       ],
-      "status": "pending",
+      "status": "completed",
       "cycles": 0,
-      "attempts": 0,
-      "files_changed": [],
-      "evidence": null,
-      "completed_at": null,
+      "attempts": 1,
+      "files_changed": [
+        "tests/calc_test.py"
+      ],
+      "evidence": {
+        "checks": [
+          {
+            "cmd": "syntax:tests/calc_test.py",
+            "kind": "syntax",
+            "exit_code": 0,
+            "ok": true,
+            "timed_out": false,
+            "duration_s": 0.0
+          },
+          {
+            "cmd": "python -m unittest tests.calc_test",
+            "kind": "command",
+            "exit_code": 0,
+            "ok": true,
+            "timed_out": false,
+            "duration_s": 0.05
+          },
+          {
+            "cmd": "python -m unittest discover -s tests -v",
+            "kind": "tests",
+            "exit_code": 0,
+            "ok": true,
+            "timed_out": false,
+            "duration_s": 0.04
+          }
+        ],
+        "repairs": 0,
+        "continuations": 0,
+        "providers": [
+          "openrouter"
+        ],
+        "summary": "Create unit tests for calc.py in tests/calc_test.py covering add, divide, and divide-by-zero ValueError.",
+        "weak": false
+      },
+      "completed_at": "2026-10-10T15:26:08+00:00",
       "corrective_for": null,
       "fixes_bugs": [],
       "notes": []
