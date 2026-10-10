@@ -11,6 +11,18 @@
       "signature": "ce9ddc679957",
       "created_at": "2026-10-10T15:25:19+00:00",
       "resolved_at": "2026-10-10T15:25:51+00:00"
+    },
+    {
+      "id": "B0002",
+      "task_id": "T004",
+      "error": "[malformed_output] your reply was cut off: reduce its size (use patches, split large files)",
+      "attempt": 1,
+      "status": "fixed",
+      "severity": "normal",
+      "source": "verification",
+      "signature": "afd6d11a9ab4",
+      "created_at": "2026-10-10T15:30:54+00:00",
+      "resolved_at": "2026-10-10T15:30:56+00:00"
     }
   ]
 }
