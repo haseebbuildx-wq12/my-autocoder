@@ -59,6 +59,7 @@ DEFAULTS: dict[str, Any] = {
     "task_checks": ["syntax", "tests"],
     "final_checks": ["tests", "lint", "typecheck", "build"],
     "allowed_executables_extra": [],
+    "test_env": {},                     # dummy, NON-secret values injected into project commands (tests)
 
     # --- scheduling / git ---------------------------------------------------------
     "schedule_enabled": True,
@@ -111,6 +112,9 @@ def validate(cfg: dict) -> None:
     for key in ("verification_commands", "build_commands", "allowed_executables_extra"):
         if not isinstance(cfg[key], list) or not all(isinstance(x, str) for x in cfg[key]):
             raise ConfigError(f"{key} must be a list of strings")
+    te = cfg["test_env"]
+    if not isinstance(te, dict) or not all(isinstance(k, str) and isinstance(v, (str, int, float, bool)) for k, v in te.items()):
+        raise ConfigError("test_env must be a mapping of names to simple values")
     ws = PurePosixPath(cfg["workspace_dir"])
     for key in ("state_dir", "artifact_dir"):
         other = PurePosixPath(cfg[key])
