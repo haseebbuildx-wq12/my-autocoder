@@ -193,6 +193,11 @@ class Toolbox:
             return [sys.executable, "-m", "pip", *argv[1:]]
         return argv
 
+    def _child_env(self) -> dict[str, str]:
+        env = clean_env()
+        env.update({str(k): str(v) for k, v in self.cfg.get("test_env", {}).items()})
+        return env
+
     def run_command(self, cmd: str, timeout: int | None = None, kind: str = "command") -> CommandResult:
         """Validate and run one command in the workspace. Never raises: rejected or failed
         commands come back as a failing CommandResult so the AI can react to them."""
@@ -208,7 +213,7 @@ class Toolbox:
         timed_out = False
         try:
             proc = subprocess.Popen(
-                argv, cwd=self.ws, env=clean_env(), stdin=subprocess.DEVNULL,
+                argv, cwd=self.ws, env=self._child_env(), stdin=subprocess.DEVNULL,
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, errors="replace",
                 start_new_session=(os.name == "posix"),
             )
