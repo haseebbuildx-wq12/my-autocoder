@@ -1,35 +1,14 @@
-# Autonomous coder configuration. Real secrets live ONLY in GitHub Secrets, never here.
-providers:            # priority order; providers without credentials are skipped automatically
-  - gemini            # used only if the GEMINI_API_KEY secret exists
+providers:
   - openrouter
 
 provider_options:
-  gemini:
-    model: gemini-2.5-flash
   openrouter:
-    model: nvidia/nemotron-3.5-lightning:free     # or: openrouter/free
+    model: openrouter/free
 
-max_ai_turns: 25            # AI calls per workflow run, then checkpoint and exit (resumes next run)
+max_ai_turns: 25
 max_repair_attempts: 5
 max_file_bytes: 120000
 max_context_files: 30
-plan_chunk_chars: 30000
-
 verification_commands: []
 build_commands: []
 schedule_enabled: true
-
-# Dummy, NON-secret values passed to the generated project's commands (its tests need them).
-# Real secrets are never passed to generated code.
-test_env:
-  APP_NAME: whatsapp-saas
-  APP_ENV: test
-  APP_URL: http://localhost:3000
-  API_URL: http://localhost:4000
-  PORT: "4000"
-  CORS_ORIGINS: http://localhost:3000
-  DB_SSL: "false"
-  SESSION_SECRET: ci-test-session-value-not-a-real-secret-0123456789
-  APP_ENCRYPTION_KEY: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
-  CRON_SECRET: ci-test-cron-value-0123456789
-  WHATSAPP_WEBHOOK_VERIFY_TOKEN: ci-test-verify-value
