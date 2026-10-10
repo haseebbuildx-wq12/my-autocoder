@@ -9,10 +9,13 @@
         "T001",
         "T004"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "tests/calc_test.py imports add from calc and exercises it with add(2,3)==5, add(-1,1)==0, add(0,0)==0. Task T001 recorded add(2,3)=5 and all tests pass (exit_code 0).",
+      "files": [
+        "calc.py",
+        "tests/calc_test.py"
+      ],
+      "verified_at": "2026-10-10T15:31:01+00:00"
     },
     {
       "requirement_id": "REQ-002",
@@ -23,10 +26,13 @@
         "T002",
         "T004"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "tests/calc_test.py imports divide and tests divide(10,2)==5, divide(5,2)==2.5, divide(-6,3)==-2, and test_divide_by_zero asserts ValueError is raised for divide(5,0). Task T002 recorded divide(10,2)==5 and divide(5,0) raises ValueError. All tests pass.",
+      "files": [
+        "calc.py",
+        "tests/calc_test.py"
+      ],
+      "verified_at": "2026-10-10T15:31:01+00:00"
     },
     {
       "requirement_id": "REQ-003",
@@ -37,10 +43,13 @@
         "T003",
         "T004"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "tests/calc_test.py uses unittest.TestCase with test_add, test_divide, and test_divide_by_zero covering both functions including the divide-by-zero error case. Test discovery ran successfully (python -m unittest discover -s tests -v, exit_code 0).",
+      "files": [
+        "tests/calc_test.py",
+        "tests/__init__.py"
+      ],
+      "verified_at": "2026-10-10T15:31:01+00:00"
     }
   ]
 }

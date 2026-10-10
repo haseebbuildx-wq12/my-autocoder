@@ -1,5 +1,5 @@
 {
-  "status": "working",
+  "status": "complete",
   "current_task_id": null,
   "completed_task_ids": [
     "T001",
@@ -8,10 +8,10 @@
     "T004"
   ],
   "last_provider": "openrouter",
-  "last_action": "completed T004",
+  "last_action": "final verification passed; ZIP built",
   "last_error": null,
-  "next_action": "next task",
-  "updated_at": "2026-10-10T15:30:56+00:00",
+  "next_action": "none",
+  "updated_at": "2026-10-10T15:31:01+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
   "run_count": 11,
   "planning": {
@@ -31,7 +31,7 @@
     },
     "openrouter": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-10-10T15:30:56+00:00",
+      "last_success_at": "2026-10-10T15:31:01+00:00",
       "last_error_kind": "outage",
       "last_error": "OpenRouter returned empty content",
       "last_error_at": "2026-10-10T09:47:50+00:00"
@@ -41,6 +41,39 @@
   "in_flight_files": [],
   "avoid_provider": [],
   "verification_round": 0,
-  "final_checks": [],
-  "last_good_commit": "272ff2be6a3fb0f54b9ecb9546ceae09afacca30"
+  "final_checks": [
+    {
+      "name": "tests",
+      "status": "pass",
+      "commands": [
+        {
+          "cmd": "python -m unittest discover -s tests -v",
+          "kind": "tests",
+          "exit_code": 0,
+          "ok": true,
+          "timed_out": false,
+          "duration_s": 0.05
+        }
+      ]
+    },
+    {
+      "name": "lint",
+      "status": "skipped",
+      "commands": [],
+      "note": "nothing detected"
+    },
+    {
+      "name": "typecheck",
+      "status": "skipped",
+      "commands": [],
+      "note": "nothing detected"
+    },
+    {
+      "name": "build",
+      "status": "skipped",
+      "commands": [],
+      "note": "nothing detected"
+    }
+  ],
+  "last_good_commit": "e72379fbe1d5b2a62593f90b3df93c25eab65b0b"
 }
