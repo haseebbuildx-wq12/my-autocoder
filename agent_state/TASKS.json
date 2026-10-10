@@ -1,3 +1,66 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Create calc.py module with add and divide",
+      "description": "Implement calc.py exporting add(a,b) returning sum and divide(a,b) returning a/b, raising ValueError when b is zero.",
+      "depends_on": [],
+      "requirements": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-003",
+        "REQ-004"
+      ],
+      "verification": "Import calc.py and verify add(2,3) returns 5, divide(10,2) returns 5.0, and divide(10,0) raises ValueError.",
+      "verification_commands": [
+        "python -c import calc"
+      ],
+      "files": [
+        "calc.py"
+      ],
+      "status": "in_progress",
+      "cycles": 0,
+      "attempts": 5,
+      "files_changed": [
+        "calc.py",
+        "test_calc.py"
+      ],
+      "evidence": null,
+      "completed_at": null,
+      "corrective_for": null,
+      "fixes_bugs": [],
+      "notes": []
+    },
+    {
+      "id": "T002",
+      "title": "Create unittest test suite for calc module",
+      "description": "Create tests/ directory and test file covering add, divide, and division-by-zero error case using unittest framework.",
+      "depends_on": [
+        "T001"
+      ],
+      "requirements": [
+        "REQ-005",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008",
+        "REQ-009"
+      ],
+      "verification": "Run python -m unittest discover -s tests and confirm all tests pass.",
+      "verification_commands": [
+        "python -m unittest discover -s tests"
+      ],
+      "files": [
+        "tests/test_calc.py"
+      ],
+      "status": "pending",
+      "cycles": 0,
+      "attempts": 0,
+      "files_changed": [],
+      "evidence": null,
+      "completed_at": null,
+      "corrective_for": null,
+      "fixes_bugs": [],
+      "notes": []
+    }
+  ]
 }

@@ -1,3 +1,121 @@
 {
-  "requirements": []
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "id": "REQ-001",
+      "description": "Provide a Python module calc.py",
+      "source": "- Provide a Python module `calc.py` with `add(a, b)` returning the sum.",
+      "tasks": [
+        "T001"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-002",
+      "id": "REQ-002",
+      "description": "calc.py must export add(a, b) returning the sum of a and b",
+      "source": "- Provide a Python module `calc.py` with `add(a, b)` returning the sum.",
+      "tasks": [
+        "T001"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-003",
+      "id": "REQ-003",
+      "description": "calc.py must export divide(a, b) returning a / b",
+      "source": "- `calc.divide(a, b)` returns a / b and raises `ValueError` when b is zero.",
+      "tasks": [
+        "T001"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-004",
+      "id": "REQ-004",
+      "description": "divide(a, b) must raise ValueError when b is zero",
+      "source": "- `calc.divide(a, b)` returns a / b and raises `ValueError` when b is zero.",
+      "tasks": [
+        "T001"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-005",
+      "id": "REQ-005",
+      "description": "Unit tests must use unittest framework",
+      "source": "Include unit tests (unittest) in `tests/` covering both functions, including the error case.",
+      "tasks": [
+        "T002"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-006",
+      "id": "REQ-006",
+      "description": "Tests must be located in tests/ directory",
+      "source": "Include unit tests (unittest) in `tests/` covering both functions, including the error case.",
+      "tasks": [
+        "T002"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-007",
+      "id": "REQ-007",
+      "description": "Tests must cover the add function",
+      "source": "Include unit tests (unittest) in `tests/` covering both functions, including the error case.",
+      "tasks": [
+        "T002"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-008",
+      "id": "REQ-008",
+      "description": "Tests must cover the divide function",
+      "source": "Include unit tests (unittest) in `tests/` covering both functions, including the error case.",
+      "tasks": [
+        "T002"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    },
+    {
+      "requirement_id": "REQ-009",
+      "id": "REQ-009",
+      "description": "Tests must include the error case (division by zero raising ValueError)",
+      "source": "Include unit tests (unittest) in `tests/` covering both functions, including the error case.",
+      "tasks": [
+        "T002"
+      ],
+      "status": "unverified",
+      "evidence": "",
+      "files": [],
+      "verified_at": null
+    }
+  ]
 }
