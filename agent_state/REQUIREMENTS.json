@@ -8,10 +8,12 @@
       "tasks": [
         "T001"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "calc.py defines add(a, b) returning a + b; test_add in tests/test_calc.py exercises add(2,3) → 5 and other cases.",
+      "files": [
+        "calc.py"
+      ],
+      "verified_at": "2026-10-10T08:29:52+00:00"
     },
     {
       "requirement_id": "REQ-002",
@@ -21,10 +23,12 @@
       "tasks": [
         "T001"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "calc.py exports add(a, b) which returns the sum of its arguments; verified by test_add passing.",
+      "files": [
+        "calc.py"
+      ],
+      "verified_at": "2026-10-10T08:29:52+00:00"
     },
     {
       "requirement_id": "REQ-003",
@@ -34,10 +38,12 @@
       "tasks": [
         "T001"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "calc.py defines divide(a, b) returning a / b and raising ValueError when b is zero; test_divide and test_divide_by_zero confirm correct behaviour.",
+      "files": [
+        "calc.py"
+      ],
+      "verified_at": "2026-10-10T08:29:52+00:00"
     },
     {
       "requirement_id": "REQ-004",
@@ -47,10 +53,12 @@
       "tasks": [
         "T001"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "divide(10, 0) raises ValueError with message 'Cannot divide by zero'; test_divide_by_zero asserts this.",
+      "files": [
+        "calc.py"
+      ],
+      "verified_at": "2026-10-10T08:29:52+00:00"
     },
     {
       "requirement_id": "REQ-005",
@@ -60,10 +68,12 @@
       "tasks": [
         "T002"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "tests/test_calc.py uses the unittest framework (import unittest, class TestCase, assertRaises).",
+      "files": [
+        "tests/test_calc.py"
+      ],
+      "verified_at": "2026-10-10T08:29:52+00:00"
     },
     {
       "requirement_id": "REQ-006",
@@ -73,10 +83,12 @@
       "tasks": [
         "T002"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "Test file tests/test_calc.py is located inside the tests/ directory.",
+      "files": [
+        "tests/test_calc.py"
+      ],
+      "verified_at": "2026-10-10T08:29:52+00:00"
     },
     {
       "requirement_id": "REQ-007",
@@ -86,10 +98,12 @@
       "tasks": [
         "T002"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "test_add method in tests/test_calc.py exercises the add function with multiple cases (2+3, -1+1, 0+0).",
+      "files": [
+        "tests/test_calc.py"
+      ],
+      "verified_at": "2026-10-10T08:30:18+00:00"
     },
     {
       "requirement_id": "REQ-008",
@@ -99,10 +113,12 @@
       "tasks": [
         "T002"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "test_divide method in tests/test_calc.py exercises the divide function with multiple cases (10/2, -10/2, 10/-2, 0/5).",
+      "files": [
+        "tests/test_calc.py"
+      ],
+      "verified_at": "2026-10-10T08:30:18+00:00"
     },
     {
       "requirement_id": "REQ-009",
@@ -112,10 +128,12 @@
       "tasks": [
         "T002"
       ],
-      "status": "unverified",
-      "evidence": "",
-      "files": [],
-      "verified_at": null
+      "status": "verified",
+      "evidence": "test_divide_by_zero in tests/test_calc.py asserts ValueError is raised with message \"Cannot divide by zero\" when dividing by zero.",
+      "files": [
+        "tests/test_calc.py"
+      ],
+      "verified_at": "2026-10-10T08:30:18+00:00"
     }
   ]
 }

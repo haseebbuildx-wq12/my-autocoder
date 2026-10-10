@@ -1,15 +1,15 @@
 {
-  "status": "working",
+  "status": "complete",
   "current_task_id": null,
   "completed_task_ids": [
     "T001",
     "T002"
   ],
   "last_provider": "openrouter",
-  "last_action": "completed T002",
+  "last_action": "final verification passed; ZIP built",
   "last_error": null,
-  "next_action": "next task",
-  "updated_at": "2026-10-10T08:28:13+00:00",
+  "next_action": "none",
+  "updated_at": "2026-10-10T08:30:18+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
   "run_count": 6,
   "planning": {
@@ -22,13 +22,46 @@
     "gemini": {},
     "openrouter": {
       "consecutive_failures": 0,
-      "last_success_at": "2026-10-10T08:28:13+00:00"
+      "last_success_at": "2026-10-10T08:30:18+00:00"
     }
   },
   "task_runtime": {},
   "in_flight_files": [],
   "avoid_provider": [],
   "verification_round": 0,
-  "final_checks": [],
-  "last_good_commit": "89374d6d0748e5833e8a315bc50c41ad2b650755"
+  "final_checks": [
+    {
+      "name": "tests",
+      "status": "pass",
+      "commands": [
+        {
+          "cmd": "python -m unittest discover -s tests -v",
+          "kind": "tests",
+          "exit_code": 0,
+          "ok": true,
+          "timed_out": false,
+          "duration_s": 0.05
+        }
+      ]
+    },
+    {
+      "name": "lint",
+      "status": "skipped",
+      "commands": [],
+      "note": "nothing detected"
+    },
+    {
+      "name": "typecheck",
+      "status": "skipped",
+      "commands": [],
+      "note": "nothing detected"
+    },
+    {
+      "name": "build",
+      "status": "skipped",
+      "commands": [],
+      "note": "nothing detected"
+    }
+  ],
+  "last_good_commit": "7d0b3337dbe6a453c86ee479b45c05d9e92255e0"
 }
