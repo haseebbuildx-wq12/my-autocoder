@@ -2,22 +2,22 @@
   "tasks": [
     {
       "id": "T001",
-      "title": "Create calc.py module with add function",
-      "description": "Create a Python module calc.py containing the add(a, b) function that returns the sum of two numbers.",
+      "title": "Create calc.py with add function",
+      "description": "Create a Python module calc.py implementing add(a, b) that returns the sum of a and b.",
       "depends_on": [],
       "requirements": [
         "REQ-001"
       ],
-      "verification": "Import calc module and call add(2, 3) to verify it returns 5.",
+      "verification": "Import calc and call add(2, 3) to get 5.",
       "verification_commands": [
-        "python -c \"import calc; print(calc.add(2, 3))\""
+        "python -c 'from calc import add; assert add(2, 3) == 5'"
       ],
       "files": [
         "calc.py"
       ],
       "status": "completed",
       "cycles": 0,
-      "attempts": 2,
+      "attempts": 1,
       "files_changed": [],
       "evidence": {
         "checks": [
@@ -27,88 +27,97 @@
             "exit_code": 0,
             "ok": true,
             "timed_out": false,
-            "duration_s": 0.05
+            "duration_s": 0.07
           }
         ],
         "repairs": 0,
-        "continuations": 1,
+        "continuations": 0,
         "providers": [
           "openrouter"
         ],
-        "summary": "calc.py already contains the add(a, b) function returning the sum. Verified it works by running the verification command.",
+        "summary": "calc.py already contains add(a, b) returning a + b. Verified with the task's verification command.",
         "weak": false
       },
-      "completed_at": "2026-10-10T09:41:14+00:00",
+      "completed_at": "2026-10-10T10:23:55+00:00",
       "corrective_for": null,
       "fixes_bugs": [],
       "notes": []
     },
     {
       "id": "T002",
-      "title": "Implement divide function in calc.py",
-      "description": "Add divide(a, b) function to calc.py that returns a / b and raises ValueError when b is zero.",
+      "title": "Add divide function to calc.py",
+      "description": "Implement divide(a, b) in calc.py that returns a / b and raises ValueError when b is zero.",
       "depends_on": [
         "T001"
       ],
       "requirements": [
         "REQ-002"
       ],
-      "verification": "Call divide(10, 2) to verify it returns 5.0, and call divide(1, 0) to verify it raises ValueError.",
+      "verification": "Import calc and verify divide(10, 2) == 5 and divide(5, 0) raises ValueError.",
       "verification_commands": [
-        "python -c \"import calc; print(calc.divide(10, 2)); calc.divide(1, 0)\""
+        "python -c 'from calc import divide; print(divide(10, 2))'",
+        "python -c 'from calc import divide; divide(5, 0)'"
       ],
       "files": [
         "calc.py"
       ],
-      "status": "completed",
+      "status": "pending",
       "cycles": 0,
-      "attempts": 2,
+      "attempts": 0,
       "files_changed": [],
-      "evidence": {
-        "checks": [
-          {
-            "cmd": "python -m unittest discover -s tests -v",
-            "kind": "tests",
-            "exit_code": 0,
-            "ok": true,
-            "timed_out": false,
-            "duration_s": 0.05
-          }
-        ],
-        "repairs": 1,
-        "continuations": 0,
-        "providers": [
-          "openrouter"
-        ],
-        "summary": "divide function already implemented in calc.py",
-        "weak": false
-      },
-      "completed_at": "2026-10-10T09:41:37+00:00",
+      "evidence": null,
+      "completed_at": null,
       "corrective_for": null,
       "fixes_bugs": [],
       "notes": []
     },
     {
       "id": "T003",
-      "title": "Create unit tests for calc module",
-      "description": "Create tests/test_calc.py with unittest test cases covering add function, divide function, and divide error case.",
+      "title": "Create unit tests in tests/ directory",
+      "description": "Add a tests/calc_test.py using unittest covering add, divide, and the ValueError case for divide.",
       "depends_on": [
         "T002"
       ],
       "requirements": [
         "REQ-003"
       ],
-      "verification": "Run unittest to verify all tests pass including the ValueError test case.",
+      "verification": "Run unittest and confirm all tests pass, including the divide-by-zero error case.",
       "verification_commands": [
-        "python -m unittest tests.test_calc -v"
+        "python -m unittest tests.calc_test"
       ],
       "files": [
-        "tests/test_calc.py",
-        "tests/__init__.py"
+        "tests/calc_test.py"
       ],
-      "status": "in_progress",
+      "status": "pending",
       "cycles": 0,
-      "attempts": 3,
+      "attempts": 0,
+      "files_changed": [],
+      "evidence": null,
+      "completed_at": null,
+      "corrective_for": null,
+      "fixes_bugs": [],
+      "notes": []
+    },
+    {
+      "id": "T004",
+      "title": "Run full integration verification",
+      "description": "Execute the full test suite and verify all requirements are met.",
+      "depends_on": [
+        "T003"
+      ],
+      "requirements": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-003"
+      ],
+      "verification": "All unit tests pass and calc module functions work as specified.",
+      "verification_commands": [
+        "python -m unittest discover"
+      ],
+      "files": [],
+      "status": "pending",
+      "cycles": 0,
+      "attempts": 0,
       "files_changed": [],
       "evidence": null,
       "completed_at": null,
