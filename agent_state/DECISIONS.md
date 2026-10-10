@@ -5,3 +5,5 @@
 - 2026-10-10T08:22:11+00:00 — T001: identical failure repeated; forcing a different approach/provider
 - 2026-10-10T08:26:17+00:00 — T001: attempt cycle 1 failed; rolled back, retrying with a different approach/provider
 - 2026-10-10T08:30:18+00:00 — FINAL VERIFICATION PASSED. artifact/project.zip and FINAL_REPORT.md created.
+- 2026-10-10T09:02:59+00:00 — Re-planning requested: previous plan discarded (code on disk is kept).
+- 2026-10-10T09:02:59+00:00 — Provider gemini reported config: HTTP 404: {   "error": {     "code": 404,     "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemin. Not falling back automatically; fix the configuration/credentials and re-run.

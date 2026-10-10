@@ -1,25 +1,27 @@
 {
-  "status": "complete",
+  "status": "blocked_config",
   "current_task_id": null,
-  "completed_task_ids": [
-    "T001",
-    "T002"
-  ],
+  "completed_task_ids": [],
   "last_provider": "openrouter",
-  "last_action": "final verification passed; ZIP built",
-  "last_error": null,
-  "next_action": "none",
-  "updated_at": "2026-10-10T08:58:09+00:00",
+  "last_action": "planning: extracting requirements (part 1/1)",
+  "last_error": "gemini: config: HTTP 404: {   \"error\": {     \"code\": 404,     \"message\": \"This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemin",
+  "next_action": "fix provider credentials/configuration, then re-run (blocks lift when the credential changes)",
+  "updated_at": "2026-10-10T09:02:59+00:00",
   "spec_sha256": "ac6ef5b0983c817ae68f4f13ffff6df2dbb808efc2aa16f5f221765559befbf1",
-  "run_count": 6,
+  "run_count": 7,
   "planning": {
-    "stage": "done",
-    "chunks_total": 1,
-    "chunks_done": 1,
-    "req_batches_done": 1
+    "stage": "requirements",
+    "chunks_total": 1
   },
   "providers": {
-    "gemini": {},
+    "gemini": {
+      "blocked": {
+        "kind": "config",
+        "message": "HTTP 404: {   \"error\": {     \"code\": 404,     \"message\": \"This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemin",
+        "at": "2026-10-10T09:02:59+00:00",
+        "fingerprint": "c6a9043a82d3"
+      }
+    },
     "openrouter": {
       "consecutive_failures": 0,
       "last_success_at": "2026-10-10T08:30:18+00:00"
@@ -29,39 +31,6 @@
   "in_flight_files": [],
   "avoid_provider": [],
   "verification_round": 0,
-  "final_checks": [
-    {
-      "name": "tests",
-      "status": "pass",
-      "commands": [
-        {
-          "cmd": "python -m unittest discover -s tests -v",
-          "kind": "tests",
-          "exit_code": 0,
-          "ok": true,
-          "timed_out": false,
-          "duration_s": 0.05
-        }
-      ]
-    },
-    {
-      "name": "lint",
-      "status": "skipped",
-      "commands": [],
-      "note": "nothing detected"
-    },
-    {
-      "name": "typecheck",
-      "status": "skipped",
-      "commands": [],
-      "note": "nothing detected"
-    },
-    {
-      "name": "build",
-      "status": "skipped",
-      "commands": [],
-      "note": "nothing detected"
-    }
-  ],
+  "final_checks": [],
   "last_good_commit": "7d0b3337dbe6a453c86ee479b45c05d9e92255e0"
 }
