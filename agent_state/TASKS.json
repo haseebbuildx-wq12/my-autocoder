@@ -60,12 +60,30 @@
       "files": [
         "calc.py"
       ],
-      "status": "pending",
+      "status": "completed",
       "cycles": 0,
-      "attempts": 0,
+      "attempts": 2,
       "files_changed": [],
-      "evidence": null,
-      "completed_at": null,
+      "evidence": {
+        "checks": [
+          {
+            "cmd": "python -m unittest discover -s tests -v",
+            "kind": "tests",
+            "exit_code": 0,
+            "ok": true,
+            "timed_out": false,
+            "duration_s": 0.05
+          }
+        ],
+        "repairs": 1,
+        "continuations": 0,
+        "providers": [
+          "openrouter"
+        ],
+        "summary": "divide function already implemented in calc.py",
+        "weak": false
+      },
+      "completed_at": "2026-10-10T09:41:37+00:00",
       "corrective_for": null,
       "fixes_bugs": [],
       "notes": []
